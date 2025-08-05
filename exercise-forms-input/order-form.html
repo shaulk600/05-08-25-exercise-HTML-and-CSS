@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+
+    <link rel="stylesheet" href="order-from.css">
+</head>
+
+<body>
+    <main>
+        <form action="order-confirmation.html" method="get">
+            <fieldset>
+                <legend class=headers_text>Personal details: </legend>
+
+                <label for="full_name"> full_name </label>
+                <input type="text" name="full_name" id="full_name" minlength="2" required>
+
+                <label for="email"> email </label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="tel">tel</label>
+                <input type="" name="tel" id="tel" placeholder="05_-_______" minlength="10" maxlength="10" required>
+
+                <!-- <button type="submit">submit</button> -->
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend class=headers_text>Ticket & Workshops: </legend>
+
+                <fieldset>
+                    <label for="ticket">ticket from:</label>
+                    <select name="ticket" id="ticket" required>
+                        <option value=""></option>
+                        <option value="standard">Standard</option>
+                        <option value="vip">VIP</option>
+                        <option value="student">Student</option>
+                    </select>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend class=headers_text>work_shops: </legend>
+
+                    <input type="checkbox" id="work_shops_1" name="work_shops" value="web_performance">
+                    <label for="work_shops_1 "> Web Performance </label><br>
+
+                    <input type="checkbox" id="work_shops_2" name="work_shops" value="accessibility">
+                    <label for="work_shops_2 "> Accessibility </label><br>
+
+                    <input type="checkbox" id="work_shops_3" name="work_shops" value="testing">
+                    <label for="work_shops_3 "> Testing </label><br>
+                </fieldset>
+                <br>
+
+                <fieldset>
+                    <legend class=headers_text>Diet: </legend>
+
+                    <input type="radio" id="none" name="diet" value="none">
+                    <label for="none"> None </label>
+
+                    <input type="radio" id="vegan" name="diet" value="vegan">
+                    <label for="vegan"> Vegan </label>
+
+                    <input type="radio" id="kosher" name="diet" value="kosher">
+                    <label for="kosher"> Kosher </label>
+
+                    <input type="radio" id="halal" name="diet" value="halal">
+                    <label for="halal"> Halal </label>
+
+
+
+                    <input type="radio" id="box_other" name="diet" value="other">
+                    <label for="box_other"> Other </label>
+
+                    <!-- שדה שמוסתר בהתחלה -->
+                    <div id="div_other_field" style="display: none; margin-top: 10px;">
+                        <label for="other_field">Other:</label>
+                        <input type="text" id="other_field" name="other_field">
+                    </div>
+
+
+                </fieldset>
+                <br>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend class=headers_text>Payment details: </legend>
+
+                <label for="card_num"> Card Number </label> <br>
+                <input type="number" name="card_num" id="card_num" minlength="13" maxlength="19" required>
+
+                <label for="expiry_date"> Expiry date </label>
+                <input type="month" name="expiry_date" id="expiry_date" min="08" required>
+
+                <label for="cvv">CVV</label>
+                <input type="password" name="cvv" id="cvv" placeholder="123" minlength="3" maxlength="3" required>
+
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <button type="submit">submit</button>
+            </fieldset>
+
+
+
+        </form>
+    </main>
+
+
+    <script>
+        // variable from box in name 'other' which status: true or false (or 'change' ...)
+        const box_other = document.getElementById('box_other');
+        // variable from Spesific 'div' in id here === id there
+        const div_other_field = document.getElementById('div_other_field');
+        //מאזין לכל הקריאות של name = diet
+        const radios = document.querySelectorAll('input[name="diet"]');
+
+        radios.forEach(radio => {
+            // אם הערך נלחץ יהיה עליו change
+            radio.addEventListener('change', () => {
+                //אם הכפתור 'אחר' נלחץ ..
+                if (box_other.checked) {
+                    div_other_field.style.display = 'block';
+                } else {
+                    div_other_field.style.display = 'none';
+                }
+            });
+        });
+
+
+        //5
+
+    </script>
+
+</body>
+
+</html>
